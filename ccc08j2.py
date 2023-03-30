@@ -1,43 +1,27 @@
 
-name_list = ['A', 'B', 'C', 'D', 'E']
+playlist = ['A', 'B', 'C', 'D', 'E']
 
-button = 0
-times = 0
+press_button = 0
 loop = True
+times = 0
 
 while loop:
-    button = int(input())
+    press_button = int(input())
     times = int(input())
-    if button == 1:
-      while times != 0:
-        tmp = name_list[0]
-        for i in range(1, len(name_list), 1):
-            # print(name_list[i])
-            name_list[i - 1] = name_list[i]
-        name_list[-1] = tmp
-        #print(name_list)
-        times = times - 1
 
-    elif button == 2:
-      while times != 0:
-        tmp = name_list[-1]
-        for i in range(2, len(name_list) + 1, 1):
-            name_list[-i + 1] = name_list[-i]
-        name_list[0] = tmp
-        #print(name_list)
-        times = times - 1
-
-    elif button == 3:
-      while times != 0:
-        name_list[0], name_list[1] = name_list[1], name_list[0]
-        #print(name_list)
-        times = times - 1
-    
-    elif button == 4:
-      while times != 0:
-        answer_string = ' '.join(name_list)
-        print(answer_string)
-        times = times - 1
+    if press_button == 1:
+      shift = 1
+      for t in range(times):
+        playlist = playlist[shift:] + playlist[:shift]
+    if press_button == 2:
+      shift = 1
+      for t in range(times):
+        playlist = playlist[-shift:] + playlist[:-shift]
+    if press_button == 3:
+      for t in range(times):
+        playlist[0], playlist[1] = playlist[1], playlist[0]
+    if press_button == 4:
+      playlist_to_strings = ' '.join(playlist)
+      for t in range(times):
+        print(playlist_to_strings)
       loop = False
-   
-#print(name_list)
