@@ -11,14 +11,11 @@ while quarters != 0:
     played_time = played_time + 1
     current_machine = current_machine + 1
 
-    if current_machine > 3:
-        current_machine = 1
-
-    if current_machine == 1:
+    if current_machine % 3 == 1:
         first = first + 1
-    elif current_machine == 2:
+    elif current_machine % 3 == 2:
         second = second + 1
-    elif current_machine == 3:
+    elif current_machine % 3 == 0:
         third = third + 1
 
     if first == 35:
@@ -31,4 +28,4 @@ while quarters != 0:
         third = 0
         quarters = quarters + 9
 
-print('Martha plays %d times before going broke.' % played_time)
+print(f'Martha plays {played_time} times before going broke.')
