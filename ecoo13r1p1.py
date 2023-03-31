@@ -1,16 +1,31 @@
 
-def is_america_words(words):
-    return words[-2:] == 'or' 
 
-def is_vowel(words):
-    return words[-3] not in 'aeiouy'
+next_num = int(input())
+late_num = 0
+waiting_num = 0
 
 while True:
-    
     words = input()
-    if words == 'quit!':
-        break
     
-    if len(words) > 4 and is_america_words(words) and is_vowel(words):
-        words = words[:-2] + 'our'
-    print(words)
+    if words == 'EOF':
+        break
+
+    if words == 'TAKE':
+
+        late_num = late_num + 1
+        waiting_num = waiting_num + 1
+        next_num = next_num + 1
+
+        if next_num == 1000:
+            next_num = 1
+
+    elif words == 'SERVE':
+        waiting_num = waiting_num - 1
+
+    elif words == 'CLOSE':
+        print(late_num, waiting_num, next_num)
+        late_num = 0
+        waiting_num = 0
+
+    elif words == 'EOF':
+        break
